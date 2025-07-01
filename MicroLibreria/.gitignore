@@ -1,0 +1,68 @@
+bin/
+obj/
+out/
+
+# Visual Studio workspace settings
+.vs/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Dotnet artifacts
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Entity Framework Migrations
+Migrations/*Designer.cs
+Migrations/*Snapshot.cs
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Publish output
+publish/
+*.publish.xml
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# Others
+*.dbmdl
+*.pdb
+
+# Secrets and configuration
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+# Test results
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# Backup & temp files
+*~
+*.tmp
+*.bak
