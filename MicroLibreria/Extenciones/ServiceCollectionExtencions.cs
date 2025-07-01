@@ -2,7 +2,6 @@
 using MediatR;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Uttt.Micro.Service.Aplication;
 
 namespace Uttt.Micro.Service.Extenciones
@@ -16,7 +15,7 @@ namespace Uttt.Micro.Service.Extenciones
 
             services.AddDbContext<ContextoLibreria>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+                options.UseMySQL(configuration.GetConnectionString("DefaultConnection"));
             });
 
             services.AddMediatR(typeof(Nuevo.Manejador).Assembly);

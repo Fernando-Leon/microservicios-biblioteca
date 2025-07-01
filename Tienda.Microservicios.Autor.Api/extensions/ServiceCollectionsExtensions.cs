@@ -17,7 +17,7 @@ namespace Tienda.Microservicios.Autor.Api.extensions
 
             services.AddDbContext<ContextoAutor>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+                options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
             });
 
             services.AddMediatR(typeof(Nuevo.Manejador).Assembly);

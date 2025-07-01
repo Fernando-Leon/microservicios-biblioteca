@@ -1,13 +1,17 @@
 version: '3.8'
 services:
-  sqlserver:
-    image: mcr.microsoft.com/mssql/server:2022-latest
+  mysql:
+    image: mysql:8.0
     environment:
-      SA_PASSWORD: "pass_admin_123"
-      ACCEPT_EULA: "Y"
+      MYSQL_ROOT_PASSWORD: "pass_admin_123"
+      MYSQL_DATABASE: "libreria"
     ports:
-      - "1433:1433"
+      - "3307:3306"
     restart: always
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - default
 
   uttt-micro-service:
     build: .
@@ -15,6 +19,15 @@ services:
       - "5000:5000"
     environment:
       - ASPNETCORE_URLS=http://+:5000
-      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=libreria;User Id=sa;Password=pass_admin_123;TrustServerCertificate=True;
+      - ConnectionStrings__DefaultConnection=server=mysql;port=3306;database=libreria;user=root;password=pass_admin_123
     depends_on:
-      - sqlserver
+      - mysql
+    networks:
+      - default
+
+volumes:
+  mysql_data:
+
+networks:
+  default:
+    driver: bridge

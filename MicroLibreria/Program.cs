@@ -1,10 +1,3 @@
-using FluentValidation;
-using FluentValidation.AspNetCore;
-using MediatR;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.IdentityModel.Tokens;
-using System.Reflection;
-using System.Text;
 using Uttt.Micro.Service.Extenciones;
 
 var builder = WebApplication.CreateBuilder(args);

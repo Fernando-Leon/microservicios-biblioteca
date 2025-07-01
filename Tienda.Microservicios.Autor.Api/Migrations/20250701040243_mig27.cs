@@ -1,12 +1,13 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace Tienda.Microservicios.Autor.Api.Migrations
 {
     /// <inheritdoc />
-    public partial class mig1 : Migration
+    public partial class mig27 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,12 +16,12 @@ namespace Tienda.Microservicios.Autor.Api.Migrations
                 name: "AutorLibros",
                 columns: table => new
                 {
-                    AutorLibroId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Apellido = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AutorLibroGuid = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    AutorLibroId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Nombre = table.Column<string>(type: "text", nullable: false),
+                    Apellido = table.Column<string>(type: "text", nullable: false),
+                    FechaNacimiento = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    AutorLibroGuid = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -31,13 +32,13 @@ namespace Tienda.Microservicios.Autor.Api.Migrations
                 name: "GradoAcademicos",
                 columns: table => new
                 {
-                    GradoAcademicoId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CentroAcademico = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FechaGrado = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AutorLibroId = table.Column<int>(type: "int", nullable: false),
-                    GradoAcademicoGuid = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    GradoAcademicoId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Nombre = table.Column<string>(type: "text", nullable: false),
+                    CentroAcademico = table.Column<string>(type: "text", nullable: false),
+                    FechaGrado = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    AutorLibroId = table.Column<int>(type: "integer", nullable: false),
+                    GradoAcademicoGuid = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {

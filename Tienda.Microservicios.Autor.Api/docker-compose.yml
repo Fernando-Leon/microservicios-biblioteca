@@ -1,19 +1,24 @@
-version: '3.8'
 services:
-  sqlserver:
-    image: mcr.microsoft.com/mssql/server:2022-latest
+  postgres:
+    image: postgres:15
     environment:
-      SA_PASSWORD: "pass_admin_123"
-      ACCEPT_EULA: "Y"
+      POSTGRES_PASSWORD: "pass_admin_123"
+      POSTGRES_USER: "postgres"
+      POSTGRES_DB: "libreria_autores"
     ports:
-      - "14330:1433"
+      - "5433:5432"
     restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
   autor-api:
     build: .
     depends_on:
-      - sqlserver
+      - postgres
     environment:
-      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=Libreria;User Id=sa;Password=pass_admin_123;TrustServerCertificate=True;
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=libreria_autores;Username=postgres;Password=pass_admin_123;
     ports:
       - "8080:8080"
+
+volumes:
+  postgres_data:
