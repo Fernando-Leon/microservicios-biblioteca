@@ -1,0 +1,49 @@
+### Variables
+@baseUrl = https://localhost:7000
+@contentType = application/json
+
+### Registrar usuario
+POST {{baseUrl}}/api/auth/register
+Content-Type: {{contentType}}
+
+{
+  "usuarioNombre": "admin",
+  "contraseña": "123456",
+  "rol": "Admin"
+}
+
+### Login
+POST {{baseUrl}}/api/auth/login
+Content-Type: {{contentType}}
+
+{
+  "usuarioNombre": "admin",
+  "contraseña": "123456"
+}
+
+### Refresh Token
+POST {{baseUrl}}/api/auth/refresh
+Content-Type: {{contentType}}
+
+{
+  "refreshToken": "{{refreshToken}}"
+}
+
+### Validar Token
+POST {{baseUrl}}/api/auth/validate
+Content-Type: {{contentType}}
+
+"{{accessToken}}"
+
+### Endpoint Protegido
+GET {{baseUrl}}/api/auth/protected
+Authorization: Bearer {{accessToken}}
+
+### Revocar Token
+POST {{baseUrl}}/api/auth/revoke
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+
+{
+  "refreshToken": "{{refreshToken}}"
+}

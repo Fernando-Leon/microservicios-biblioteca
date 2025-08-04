@@ -3,6 +3,7 @@ using MediatR;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Uttt.Micro.Service.Aplication;
+using Uttt.Micro.Service.Services;
 
 namespace Uttt.Micro.Service.Extenciones
 {
@@ -20,6 +21,9 @@ namespace Uttt.Micro.Service.Extenciones
 
             services.AddMediatR(typeof(Nuevo.Manejador).Assembly);
             services.AddAutoMapper(typeof(Consulta.Manejador));
+
+            // Registrar HttpClient y AuthValidationService
+            services.AddHttpClient<IAuthValidationService, AuthValidationService>();
 
             return services;
         }

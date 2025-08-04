@@ -3,6 +3,7 @@ using Tienda.Microservicios.Autor.Api.Persistencia;
 using MediatR;
 using FluentValidation.AspNetCore;
 using Tienda.Microservicios.Autor.Api.Aplication;
+using Tienda.Microservicios.Autor.Api.Services;
 
 namespace Tienda.Microservicios.Autor.Api.extensions
 {
@@ -22,6 +23,9 @@ namespace Tienda.Microservicios.Autor.Api.extensions
 
             services.AddMediatR(typeof(Nuevo.Manejador).Assembly);
             services.AddAutoMapper(typeof(Consulta.Manejador));
+
+            // Registrar HttpClient y AuthValidationService
+            services.AddHttpClient<IAuthValidationService, AuthValidationService>();
 
             return services;
         }
